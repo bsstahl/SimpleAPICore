@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StackOverflow.Model\StackOverflow.Model.csproj" />
+    <ProjectReference Include="..\StackOverflowService\StackOverflowService.csproj" />
+  </ItemGroup>
+
+</Project>
