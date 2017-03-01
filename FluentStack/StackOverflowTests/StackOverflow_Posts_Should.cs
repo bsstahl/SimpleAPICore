@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StackOverflow.Model;
-using FluentStackOverflow;
 
 namespace StackOverflowTests
 {
@@ -27,106 +26,106 @@ namespace StackOverflowTests
             Assert.AreEqual(2, results.Count());
         }
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenACustomContextIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenACustomContextIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //    var actualResults = FluentStack.Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
         #endregion
 
         #region Demo2
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenQuestionsMethodIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.ParentId == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenQuestionsMethodIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.ParentId == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Posts.Questions()
-                .Where(p => p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //    var actualResults = FluentStack.Posts.Questions()
+        //        .Where(p => p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenQuestionsPropertyIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenQuestionsPropertyIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Questions
-                .Where(p => p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //    var actualResults = FluentStack.Questions
+        //        .Where(p => p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenWithAcceptedAnswerMethodIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenWithAcceptedAnswerMethodIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Questions.WithAcceptedAnswer()
-                .Where(p => p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //    var actualResults = FluentStack.Questions.WithAcceptedAnswer()
+        //        .Where(p => p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
         #endregion
 
         #region Demo3
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenAskedInLast30DaysExpressionIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenAskedInLast30DaysExpressionIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Questions.WithAcceptedAnswer()
-                .Where(Asked.InLast(30.Days()))
-                .Where(p => p.Tags.Contains("<odata>"));
+        //    var actualResults = FluentStack.Questions.WithAcceptedAnswer()
+        //        .Where(Asked.InLast(30.Days()))
+        //        .Where(p => p.Tags.Contains("<odata>"));
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
-        [TestMethod]
-        public void ReturnTheCorrectResultsWhenTaggedWithOdataMethodIsUsed()
-        {
-            var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
-                .Where(p => p.Parent == null && p.AcceptedAnswerId != null
-                    && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
-                    && p.Tags.Contains("<odata>"));
+        //[TestMethod]
+        //public void ReturnTheCorrectResultsWhenTaggedWithOdataMethodIsUsed()
+        //{
+        //    var expectedResults = new StackOverflowService.Entities(new Uri(_stackoverflowServiceRoot)).Posts
+        //        .Where(p => p.Parent == null && p.AcceptedAnswerId != null
+        //            && p.CreationDate > DateTime.UtcNow.Subtract(TimeSpan.FromDays(30))
+        //            && p.Tags.Contains("<odata>"));
 
-            var actualResults = FluentStack.Questions.WithAcceptedAnswer()
-                .Where(Asked.InLast(30.Days()))
-                .TaggedWith("oData");
+        //    var actualResults = FluentStack.Questions.WithAcceptedAnswer()
+        //        .Where(Asked.InLast(30.Days()))
+        //        .TaggedWith("oData");
 
-            RunComparisonTest(expectedResults, actualResults);
-        }
+        //    RunComparisonTest(expectedResults, actualResults);
+        //}
 
         #endregion
 
